@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM
+    "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration debug="false">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}:%L] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="SMTP" class="org.apache.log4j.net.SMTPAppender">
+        <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+
+        <param name="Threshold" value="ERROR"/>
+        <param name="To" value="someone@somemail.com"/>
+        <param name="From" value="someonelse@somemail.com"/>
+        <param name="Subject" value="Log Errors"/>
+        <param name="SMTPHost" value="smtp.somemail.com"/>
+        <param name="SMTPUsername" value="username"/>
+        <param name="SMTPPassword" value="password"/>
+        <param name="BufferSize" value="1"/>
+        <param name="SMTPDebug" value="true"/>
+
+        <triggeringPolicy class="org.apache.log4j.rolling.FilterBasedTriggeringPolicy">
+            <filter class="org.apache.log4j.varia.StringMatchFilter">
+                <param name="StringToMatch" value="ERROR01"/>
+                <param name="AcceptOnMatch" value="false"/>
+            </filter>
+
+            <filter class="org.apache.log4j.filter.ExpressionFilter">
+                <param name="expression"
+                       value="CLASS LIKE .*Log4jExpressionFilter.*"/>
+                <param name="acceptOnMatch" value="false"/>
+            </filter>
+
+            <filter class="org.apache.log4j.filter.LevelRangeFilter">
+                <param name="levelMin" value="ERROR"/>
+                <param name="levelMax" value="FATAL"/>
+            </filter>
+        </triggeringPolicy>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}:%L] %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="SMTP"/>
+    </root>
+
+</log4j:configuration>

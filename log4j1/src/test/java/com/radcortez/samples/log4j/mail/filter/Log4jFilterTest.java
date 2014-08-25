@@ -1,4 +1,4 @@
-package com.radcortez.log.log4j.mail.filter;
+package com.radcortez.samples.log4j.mail.filter;
 
 import org.junit.Test;
 import org.jvnet.mock_javamail.Mailbox;

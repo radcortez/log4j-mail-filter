@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.radcortez.log</groupId>
+    <groupId>com.radcortez.samples</groupId>
     <artifactId>log4j-mail-filter</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>Log4j Mail Filter</name>
+    <name>log4j Mail Filter</name>
 
     <prerequisites>
         <maven>3.1.1</maven>
@@ -23,8 +23,6 @@
         <version.plugin.compiler>3.1</version.plugin.compiler>
         <version.plugin.enforcer>1.3.1</version.plugin.enforcer>
         <version.plugin.jgitflow>1.0-m3</version.plugin.jgitflow>
-
-        <!-- Dependencies -->
     </properties>
 
     <build>
@@ -73,37 +71,9 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jvnet.mock-javamail</groupId>
-            <artifactId>mock-javamail</artifactId>
-            <version>1.9</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>log4j1</module>
+        <module>log4j2</module>
+    </modules>
 
 </project>

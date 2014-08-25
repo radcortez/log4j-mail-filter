@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ABSOLUTE} %-5p [%c{1}:%L] %m%n"/>
+        </Console>
+
+        <SMTP name="SMTP"
+              subject="Log Errors"
+              to="someone@somemail.com"
+              from="someonelse@somemail.com"
+              smtpHost="smtp.somemail.com"
+              smtpPort="25"
+              bufferSize="1">
+
+            <RegexFilter regex=".*ERROR01.*" onMatch="DENY" onMismatch="ACCEPT"/>
+            <PatternLayout pattern="%d{ABSOLUTE} %-5p [%c{1}:%L] %m%n"/>
+        </SMTP>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="error">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="SMTP"/>
+        </Root>
+    </Loggers>
+</Configuration>

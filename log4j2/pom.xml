@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.radcortez.samples</groupId>
         <artifactId>log4j-mail-filter</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <artifactId>log4j2-mail-filter</artifactId>
